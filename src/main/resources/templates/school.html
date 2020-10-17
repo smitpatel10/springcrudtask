@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>School Db</title>
+</head>
+<body>
+	<div align="center">
+		<h1 style="font-family: Calibri">Student List</h1>
+		<br /> <br />
+		<table border="2" cellpadding="20">
+			<thead>
+				<tr style="font-size: 20px; font-family: Calibri" bgcolor="grey">
+					<th>Student ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>City</th>
+					<th>Area</th>
+					<th>Standard</th>
+					<th>Edit</th>
+					<th>delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student : ${listStudents}">
+					<td th:text="${student.id}">Student Id</td>
+					<td th:text="${student.firstname}">First Name</td>
+					<td th:text="${student.secondname}">Last Name</td>
+					<td th:text="${student.city}">City</td>
+					<td th:text="${student.area}">Area</td>
+					<td th:text="${student.std}">Standard</td>
+
+
+					<td><form action="#"
+							th:action="@{/editstudent/} + ${student.id}">
+							<table>
+								<tr>
+									<td colspan="2"><button type="submit"
+											style="background-color: #008CBA; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">Edit</button></td>
+								</tr>
+							</table>
+						</form></td>
+					<td><form action="#"
+							th:action="@{/deletestudent/} + ${student.id}">
+							<table>
+								<tr>
+									<td colspan="2"><button type="submit"
+											style="background-color: #f44336; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">Delete</button></td>
+								</tr>
+							</table>
+						</form></td>
+			</tbody>
+		</table>
+		<br /> <br />
+		<form action="#" th:action="@{/addstudent}">
+			<table>
+				<tr>
+					<td colspan="2"><button type="submit"
+							style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">Add
+							New Student</button></td>
+				</tr>
+			</table>
+		</form>
+
+
+
+
+
+	</div>
+</body>
+</html>
